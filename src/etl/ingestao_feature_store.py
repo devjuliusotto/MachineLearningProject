@@ -18,6 +18,8 @@ def table_exists(database, table):
     return count > 0
 
 
+
+
 def date_range(dt_start, dt_stop, period='daily'):
     datetime_start = datetime.datetime.strptime(dt_start, '%Y-%m-%d')
     datetime_stop = datetime.datetime.strptime(dt_stop, '%Y-%m-%d')

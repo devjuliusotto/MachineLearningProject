@@ -6,6 +6,8 @@ import argparse
 from tqdm import tqdm
 
 
+
+
 def date_range(dt_start, dt_stop, period='daily'):
 
     date_start = datetime.datetime.strptime(dt_start, '%Y-%m-%d')

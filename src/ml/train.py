@@ -84,10 +84,13 @@ missing_0 = ['medianQtdeParcelas',
 # DBTITLE 1,Define Experimento
 mlflow.set_experiment("/Users/devjuliusotto@gmail.com/mlProject")
 
+
 # COMMAND ----------
+
 
 # DBTITLE 1,Model
 with mlflow.start_run():
+
 
     mlflow.sklearn.autolog()
     mlflow.lightgbm.autolog()
@@ -106,10 +109,13 @@ with mlflow.start_run():
                                     max_depth=10,
                                     n_estimators=400)
 
+
+
     #params = {"learning_rate": [0.1, 0.5, 0.7, 0.9, 0.99999],
     #          "n_estimators":[300,400,450, 500],
     #          "min_child_samples": [20,30,40,50,100]             
     #         }
+
     
     #grid = model_selection.GridSearchCV(model, params, cv=3, verbose=3, scoring='roc_auc')
     
@@ -122,6 +128,8 @@ with mlflow.start_run():
    
     model_pipeline.fit(X_train, y_train)
     
+
+
     auc_train = metrics.roc_auc_score(y_train, model_pipeline.predict_proba(X_train)[:,1])
     auc_test = metrics.roc_auc_score(y_test, model_pipeline.predict_proba(X_test)[:,1])
     auc_oot = metrics.roc_auc_score(df_oot[target], model_pipeline.predict_proba(df_oot[features])[:,1])
@@ -129,6 +137,8 @@ with mlflow.start_run():
     metrics_model = {"auc_train": auc_train,
                     "auc_test": auc_test,
                     "auc_oot": auc_oot}
+
+
 
     mlflow.log_metrics(metrics_model)
 

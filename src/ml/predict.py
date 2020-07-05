@@ -23,6 +23,8 @@ df_extract = df[['idVendedor']].copy()
 df_extract['0'] = predict_0
 df_extract['1'] = predict_1
 
+
+
 df_extract = (df_extract.set_index('idVendedor')
                         .stack()
                         .reset_index())
